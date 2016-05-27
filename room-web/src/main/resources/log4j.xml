@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!-- Appenders -->
+    <appender name="console_debug" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p: %c - %m%n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="DEBUG"/>
+        </filter>
+    </appender>
+
+    <appender name="file_all_log" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${room-web.log.dir}/room-all.log"/>
+        <param name="Append" value="true"/>
+        <param name="DatePattern" value=".yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+            <!--<param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n"/>-->
+        </layout>
+    </appender>
+
+    <appender name="file_error_log" class="org.apache.log4j.FileAppender">
+        <param name="File" value="${room-web.log.dir}/room-error.log"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d|[%t]|%-5p|%c| - %m%n"/>
+            <!--<param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n"/>-->
+        </layout>
+    </appender>
+
+
+
+    <category name="room_all_log" additivity="true">
+        <appender-ref ref="file_all_log"/>
+    </category>
+
+    <category name="room_error_log" additivity="true">
+        <appender-ref ref="file_error_log"/>
+    </category>
+
+    <!-- Root Logger -->
+    <root>
+        <level value="${room-web.log.level}"></level>
+        <appender-ref ref="${room-web.log.appender}" />
+    </root>
+
+
+</log4j:configuration>

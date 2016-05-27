@@ -11,5 +11,12 @@
 
     <artifactId>room-domain</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.4</version>
+        </dependency>
+    </dependencies>
 
 </project>

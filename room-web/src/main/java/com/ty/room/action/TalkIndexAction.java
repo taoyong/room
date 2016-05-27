@@ -1,7 +1,10 @@
 package com.ty.room.action;
 
 import com.ty.room.domain.RoomResult;
+import com.ty.room.domain.util.LogHelper;
+import com.ty.room.domain.util.WebHelper;
 import org.apache.commons.collections4.MapUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +24,10 @@ import java.util.Map;
 @Controller
 @RequestMapping("/")
 public class TalkIndexAction {
+    Logger logger = LogHelper.roomAllLog;
     @RequestMapping(value = "content.htm",method = RequestMethod.GET)
     public String  getArticles(@RequestParam Map<String,Object> params , Model model,HttpServletRequest request ){
-
+        logger.info("用户IP:"+ WebHelper.getIpAddress(request));
         RoomResult roomResult = new RoomResult(false);
         Long id = MapUtils.getLongValue(params,"id");
         if(id != 0 ){

@@ -91,15 +91,21 @@
         <profile>
             <id>production</id>
             <properties>
-                <room.domain.name>localhost</room.domain.name>
+                <room-web.domain.name>localhost</room-web.domain.name>
                 <welcome.word>welcome,my websit. It's product environment</welcome.word>
+                <room-web.log.dir>/usr/local/log/room/</room-web.log.dir>
+                <room-web.log.appender>console-debug</room-web.log.appender>
+                <room-web.log.level>INFO</room-web.log.level>
             </properties>
         </profile>
         <profile>
             <id>dev</id>
             <properties>
-                <room.domain.name>localhost</room.domain.name>
+                <room-web.domain.name>localhost</room-web.domain.name>
                 <welcome.word>welcome,my websit. It's dev environment</welcome.word>
+                <room-web.log.dir>/usr/local/log/room/</room-web.log.dir>
+                <room-web.log.appender>console_debug</room-web.log.appender>
+                <room-web.log.level>INFO</room-web.log.level>
             </properties>
         </profile>
     </profiles>
