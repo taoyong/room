@@ -1,7 +1,8 @@
 package com.ty.room.domain.util;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,14 +17,14 @@ public class LogHelper {
      * 所有日志
      */
     private static final String ROOM_ALL = "room_all_log";
-    public static final Logger roomAllLog = LogManager.getLogger(ROOM_ALL);
+    public static final Logger roomAllLog = LoggerFactory.getLogger(ROOM_ALL);
+
 
     /**
      * 错误日志
      */
     private static final String ROOM_ERROR = "room_error_log";
-    public static final Logger roomErrorLog = LogManager.getLogger(ROOM_ERROR);
-
+    public static final Logger roomErrorLog = LoggerFactory.getLogger(ROOM_ERROR);
 
 
 }

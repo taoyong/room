@@ -1,7 +1,6 @@
 package com.ty.room.domain.util;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,11 +9,10 @@ import javax.servlet.http.HttpServletRequest;
  * User: taoyong1
  * Date: 2016/5/27
  * Time: 15:45
- * Description:
+ * Description: 请求参数处理工具
  */
 public class WebHelper {
 
-    private static final Logger log = LogHelper.roomErrorLog;
     public static final String getIpAddress(HttpServletRequest request) {
         String ip = "";
         try {
@@ -35,7 +33,7 @@ public class WebHelper {
                 }
             }
         } catch (Exception e) {
-            log.error("获取用户ip地址异常--->" + e.getMessage(), e);
+            LogHelper.roomErrorLog.error("获取用户ip地址异常--->" + e.getMessage(), e);
         }
         return StringUtils.isNotEmpty(ip) ? ip.trim() : ip;
     }
