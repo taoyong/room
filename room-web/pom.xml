@@ -17,6 +17,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.ty</groupId>
+            <artifactId>room-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
@@ -39,6 +44,26 @@
             <artifactId>velocity</artifactId>
             <version>1.7</version>
         </dependency>
+        <!-- http://mvnrepository.com/artifact/velocity/velocity-dep -->
+        <dependency>
+            <groupId>velocity</groupId>
+            <artifactId>velocity-dep</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-tools</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <!-- http://mvnrepository.com/artifact/commons-digester/commons-digester -->
+        <dependency>
+            <groupId>commons-digester</groupId>
+            <artifactId>commons-digester</artifactId>
+            <version>1.8</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -66,13 +91,15 @@
         <profile>
             <id>production</id>
             <properties>
-
+                <room.domain.name>localhost</room.domain.name>
+                <welcome.word>welcome,my websit. It's product environment</welcome.word>
             </properties>
         </profile>
         <profile>
             <id>dev</id>
             <properties>
-
+                <room.domain.name>localhost</room.domain.name>
+                <welcome.word>welcome,my websit. It's dev environment</welcome.word>
             </properties>
         </profile>
     </profiles>

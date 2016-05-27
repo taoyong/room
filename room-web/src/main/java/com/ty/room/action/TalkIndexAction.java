@@ -1,5 +1,6 @@
 package com.ty.room.action;
 
+import com.ty.room.domain.RoomResult;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,17 +19,20 @@ import java.util.Map;
  * Description:
  */
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/")
 public class TalkIndexAction {
-    @RequestMapping(value = "/articles.htm",method = RequestMethod.GET)
+    @RequestMapping(value = "content.htm",method = RequestMethod.GET)
     public String  getArticles(@RequestParam Map<String,Object> params , Model model,HttpServletRequest request ){
 
+        RoomResult roomResult = new RoomResult(false);
         Long id = MapUtils.getLongValue(params,"id");
         if(id != 0 ){
-            model.addAttribute("msg","今日头条");
+            roomResult.setState(true);
+            roomResult.setMsg("今日头条");
         }else{
-            model.addAttribute("msg","请求参数错误!");
+            roomResult.setMsg("请求参数错误!");
         }
-        return "artiles";
+        model.addAttribute("result",roomResult);
+        return "articles";
     }
 }

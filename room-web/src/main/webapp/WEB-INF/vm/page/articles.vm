@@ -1,0 +1,8 @@
+<div>$!welcomeWords -- $date.get('yyyy-MM-dd HH:mm:ss')</div>
+<div>
+    #if($!{result.state}==true)
+      $!{result.msg}
+    #else
+        $!{requestError} :$!{result.msg}
+    #end
+</div>

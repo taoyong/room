@@ -1,8 +1,0 @@
-<!DOCTYPE html>
-<html>
-    #parse("/WEB-INF/vm/common/head.vm")
-    $screen_content
-    #parse("/WEB-INF/vm/common/footer.vm")
-    #parse("/WEB-INF/vm/common/bottom.vm")
-</body>
-</html>

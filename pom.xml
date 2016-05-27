@@ -11,6 +11,7 @@
     <modules>
         <module>room-web</module>
         <module>room-manweb</module>
+        <module>room-domain</module>
     </modules>
 
     <properties>
