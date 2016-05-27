@@ -1,0 +1,6 @@
+###品牌类型的 展示
+#macro(showBrandType $brandType)
+    #if($!brandType ==0) 自营品牌
+    #elseif($!brandType ==1) 点卡店铺化品牌
+    #end
+#end
