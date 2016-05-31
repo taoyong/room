@@ -7,13 +7,19 @@ package com.ty.room.domain;
  * Time: 13:11
  * Description:
  */
-public class RoomResult {
+public class RoomResult implements java.io.Serializable{
     private String msg;
     private boolean state;
 
     public  RoomResult(boolean state){
         this.state = state;
     }
+
+    public RoomResult(String msg, boolean state) {
+        this.msg = msg;
+        this.state = state;
+    }
+
     public RoomResult(){}
 
     public String getMsg() {

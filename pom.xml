@@ -12,6 +12,7 @@
         <module>room-web</module>
         <module>room-manweb</module>
         <module>room-domain</module>
+        <module>room-service</module>
     </modules>
 
     <properties>
@@ -123,6 +124,32 @@
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
         </dependency>
+
+        <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>quartz</artifactId>
+            <version>1.6.3</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+
 
     </dependencies>
     <build>

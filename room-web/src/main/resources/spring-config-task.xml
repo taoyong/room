@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="testWorker" class="com.ty.room.action.util.TestWorker"></bean>
+    <bean id="serviceFor" class="com.ty.room.action.util.TestWorker.Service4Job"></bean>
+    <!-- 任务调度类情况2: 在不需要继承自QuartzJobBean的情况下,直接调度现有类中的业务方法 -->
+    <bean id="roomJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="serviceFor"></property>
+        <property name="targetMethod" value="job"></property>
+    </bean>
+
+    <!-- 触发器情况2: 基于SimpleTriggerBean任务调用 -->
+    <bean id="quartzCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="roomJobDetail"></property>
+        <!-- 这里使用cronExpression的字符串形式.0/3 表示每3秒执行一次. -->
+        <property name="cronExpression" value="0/5 * * * * ?"></property>
+    </bean>
+
+    <!-- 开始执行任务调度触发器 -->
+    <bean id="testScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="quartzCronTrigger"/>
+            </list>
+        </property>
+        <property name="autoStartup">
+            <value>false</value>
+        </property>
+    </bean>
+
+</beans>
