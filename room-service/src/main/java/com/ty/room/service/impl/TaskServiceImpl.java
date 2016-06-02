@@ -7,11 +7,12 @@ import org.apache.commons.collections.MapUtils;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.ContextLoader;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -25,11 +26,16 @@ import java.util.Map;
  * Description:
  */
 @Service(value = "taskService")
-public class TaskServiceImpl implements TaskService {
+public class TaskServiceImpl implements TaskService,ApplicationContextAware {
     @Autowired
     private Map<String, Scheduler> schedulerMap;
+    private ApplicationContext applicationContext;
 
-    public void startWorker(String jobTask,String order) {
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext=applicationContext;
+    }
+
+    public void startWorker(String jobTask, String order) {
         if(MapUtils.isEmpty(schedulerMap))
             return;
         int code = TaskOperateEnum.getCodeByOrder(order);
@@ -71,8 +77,7 @@ public class TaskServiceImpl implements TaskService {
 
     private void startOnceTask(String jobTask){
         try {
-            WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
-            MethodInvokingJobDetailFactoryBean b = (MethodInvokingJobDetailFactoryBean)(((JobDetail)wac.getBean(jobTask)).getJobDataMap().get("methodInvoker"));
+            MethodInvokingJobDetailFactoryBean b = (MethodInvokingJobDetailFactoryBean)(((JobDetail)applicationContext.getBean(jobTask)).getJobDataMap().get("methodInvoker"));
             Method method =b.getPreparedMethod();
             method.invoke(b.getTargetObject(),null);
         } catch (IllegalAccessException e) {

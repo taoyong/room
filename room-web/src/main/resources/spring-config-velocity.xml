@@ -1,30 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:cache="http://www.springframework.org/schema/cache" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
-http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<!--<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-		<property name="resourceLoaderPath" value="WEB-INF"></property>
-		<property name="configLocation" value="classpath:velocity.properties"/>
-	</bean>
 
-	&lt;!&ndash; Velocity &ndash;&gt;
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
-		<property name="prefix" value="WEB-INF/vm/page/"></property>
-		<property name="suffix" value=".vm"></property>
-		<property name="exposeSessionAttributes" value="true"></property>
-		<property name="exposeRequestAttributes" value="true"></property>
-	&lt;!&ndash;	<property name="dateToolAttribute" value="datetool"></property>&ndash;&gt;
-		<property name="numberToolAttribute" value="numbertool"></property>
-		<property name="contentType" value="text/html;charset=UTF-8"></property>
-		<property name="layoutUrl" value="layout/default.vm"></property>
-		<property name="layoutKey" value="layoutPath"></property>
-		<property name="screenContentKey" value="screen_content"></property>
-		<property name="exposeSpringMacroHelpers" value="true"></property>
-		<property name="toolboxConfigLocation" value="vm/toolbox.xml"></property>
-	</bean>-->
 
 	<!-- 配置velocity引擎 -->
 	<bean id="velocityConfigurer"

@@ -14,7 +14,7 @@ public enum  TaskOperateEnum {
     START_ONECE_TASK(2,"startOnece","执行一次定时任务"),
     STOP_TASK(3,"stop","暂停定时任务");
     public int code;
-    private String order;
+    public String order;
     private String info;
 
     TaskOperateEnum(int code, String order, String info) {
