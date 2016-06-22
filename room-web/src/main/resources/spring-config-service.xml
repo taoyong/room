@@ -9,8 +9,14 @@
                 <map>
                     <entry key="testScheduler" value-ref="testScheduler"/>
                     <entry key="roomJobDetail" value-ref="roomJobDetail"/>
+                    <entry key="signJobDetail" value-ref="signJobDetail"/>
+                    <entry key="signScheduler" value-ref="signScheduler"/>
                 </map>
             </constructor-arg>
         </bean>
+        <bean id="autoSignByGetServiceImpl" class="com.ty.room.service.impl.AutoSignByGetServiceImpl">
+            <property name="url" value="http://huan.jd.com/json/sign/signIn.action"/>
+        </bean>
     </beans>
+
 </beans>

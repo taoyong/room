@@ -67,6 +67,7 @@ public class TaskServiceImpl implements TaskService,ApplicationContextAware {
     }
 
     private void startTaskSchedule(String jobTask){
+        LogHelper.roomAllLog.info("startTaskSchedule-->启动定时任务-{}!",jobTask);
         Scheduler scheduler = schedulerMap.get(jobTask);
         try {
             scheduler.start();
@@ -76,6 +77,7 @@ public class TaskServiceImpl implements TaskService,ApplicationContextAware {
     }
 
     private void startOnceTask(String jobTask){
+        LogHelper.roomAllLog.info("startTaskSchedule-->执行一次任务-{}!",jobTask);
         try {
             MethodInvokingJobDetailFactoryBean b = (MethodInvokingJobDetailFactoryBean)(((JobDetail)applicationContext.getBean(jobTask)).getJobDataMap().get("methodInvoker"));
             Method method =b.getPreparedMethod();

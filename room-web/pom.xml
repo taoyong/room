@@ -68,7 +68,7 @@
 
 
     <build>
-        <finalName>talk-web.war</finalName>
+        <finalName>room</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

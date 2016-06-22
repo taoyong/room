@@ -31,4 +31,28 @@
         </property>
     </bean>
 
+    <!-- 自动签到功能 -->
+    <bean id="signJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="autoSignByGetServiceImpl"></property>
+        <property name="targetMethod" value="sign"></property>
+    </bean>
+
+    <!-- 触发器情况2: 基于SimpleTriggerBean任务调用 -->
+    <bean id="signCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="signJobDetail"></property>
+        <!-- 这里使用cronExpression的字符串形式. 8点执行一次. -->
+        <property name="cronExpression" value="0 0 8 * * ?"></property>
+    </bean>
+
+    <!-- 开始执行任务调度触发器 -->
+    <bean id="signScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="signCronTrigger"/>
+            </list>
+        </property>
+        <property name="autoStartup">
+            <value>true</value>
+        </property>
+    </bean>
 </beans>
